@@ -1,0 +1,28 @@
+workingDir: "."
+dryRun: true
+yamlSelectors:
+  - grep: 
+      args:
+        - --exclude-dir="dir"
+        - -rnw 
+        - '.'
+        - -e 
+        - 'namespace: dum'
+processing:
+  - add:
+      where:
+        - before:
+            field:
+              path:
+                dum:
+                  dum:
+        - and:
+          if:
+            field:
+              value:
+                equals: true
+      what:
+        field:
+          name: newDum
+          value: false
+     
